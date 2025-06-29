@@ -26,7 +26,6 @@ Here's a quick look at the app interface:
 
 ![Task Manager Screenshot](./src/assets/screenshot.png)
 
-> Make sure `assets/screenshot.png` exists in your project folder before pushing to GitHub.
 
 ---
 
