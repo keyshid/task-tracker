@@ -34,8 +34,8 @@ Here's a quick look at the app interface:
 1. **Clone the repo**
 
 ```bash
-git clone https://github.com/your-username/task-tracker-app.git
-cd task-tracker-app
+git clone https://github.com/your-username/task-tracker.git
+cd task-tracker
 ```
 
 2. **Install dependencies**
