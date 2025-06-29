@@ -18,6 +18,17 @@ This is a simple and clean Task Tracker App built with **Angular 16**, **Angular
 - 🎨 Angular Material + SCSS  
 - 🐳 Dockerized for easy deployment
 
+---
+
+## 📸 Screenshot
+
+Here's a quick look at the app interface:
+
+![Task Manager Screenshot](assets/screenshot.png)
+
+> Make sure `assets/screenshots/dashboard.png` exists in your project folder before pushing to GitHub.
+
+---
 
 ## 📦 Installation (Development)
 
