@@ -11,7 +11,7 @@ export class DueDateFormatPipe implements PipeTransform {
 
     const date = new Date(value);
     const today = new Date();
-    today.setHours(0, 0, 0, 0); // remove time part
+    today.setHours(0, 0, 0, 0);
 
     const formatted = `${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')}/${date.getFullYear()}`;
 
