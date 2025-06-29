@@ -2,6 +2,13 @@
     width: 100%;
     display: flex;
     justify-content: center;
+
+    .archive-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
 }
 
 .task-card {
@@ -64,4 +71,5 @@
     overflow-wrap: break-word;
     white-space: pre-wrap;
     max-width: 100%;
+
 }
