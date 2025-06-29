@@ -1,7 +1,7 @@
 <div class="loading-container" *ngIf="loading">
     <mat-spinner diameter="40"></mat-spinner>
 </div>
-<div class="sort-wrapper">
+<!-- <div class="sort-wrapper">
     <mat-form-field appearance="fill">
         <mat-label>Sort Tasks By</mat-label>
         <mat-select [(value)]="sortBy" (selectionChange)="onSortChange($event.value)">
@@ -9,7 +9,19 @@
             <mat-option value="dueDate">Due Date</mat-option>
         </mat-select>
     </mat-form-field>
+</div> -->
+<!-- Toggle button group for sorting -->
+<div class="sort-wrapper">
+    <mat-button-toggle-group [value]="sortBy" (change)="onSortChange($event.value)" appearance="legacy"
+        class="sort-toggle-group" exclusive>
+        <mat-button-toggle value="priority">Priority</mat-button-toggle>
+        <mat-button-toggle value="">None</mat-button-toggle>
+        <mat-button-toggle value="dueDate">Due Date</mat-button-toggle>
+    </mat-button-toggle-group>
 </div>
+
+
+
 <!-- Loop through all tasks and show each one in a card -->
 <mat-card *ngFor="let task of tasks" class="task-card" [appDisableCompleted]="task.status"
     [appOverdueHighlight]="task.dueDate || null">
@@ -22,16 +34,16 @@
 
         </mat-card-title>
         <!-- <mat-card-subtitle>{{ task.status }} • {{ task.category }}</mat-card-subtitle> -->
-        <mat-card-subtitle>
+        <!-- <mat-card-subtitle>
             {{ task.description | truncate }}
-        </mat-card-subtitle>
+        </mat-card-subtitle> -->
 
     </mat-card-header>
     <!-- Task body: description, due date, and tags -->
     <mat-card-content>
-        <p><strong>status:</strong> {{ task.status }}</p>
-        <p><strong>category:</strong> {{ task.category }}</p>
-        <!-- <p>{{ task.description | truncate }}</p> -->
+        <p><strong>Status:</strong> {{ task.status }}</p>
+        <p><strong>Category:</strong> {{ task.category }}</p>
+        <p class="description"><strong>Description:</strong> {{ task.description | truncate }} </p>
         <p><strong>Due:</strong> {{ task.dueDate | dueDateFormat }}</p>
         <p *ngIf="task.priority">
             <strong>Priority:</strong>

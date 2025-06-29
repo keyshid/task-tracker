@@ -1,27 +1,77 @@
-# TaskTracker
+# 📝 Task Tracker App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
+This is a simple and clean Task Tracker App built with **Angular 16**, **Angular Material**, and **SCSS**. You can add, view, update, delete, and archive your tasks. It supports form validation, sorting by priority or due date, responsive design, and even shows alerts and tag autocomplete from a public API.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🚀 Features
 
-## Code scaffolding
+- ✅ Add / Edit / Delete Tasks  
+- 🗂 Archive and Unarchive Tasks  
+- 🟡 Priority Sorting (Low, Medium, High)  
+- ⏰ Due Date Sorting and Overdue Highlight  
+- 🏷 Tag Autocomplete (fetched from public API)  
+- ⚠️ Custom Validators (no past dates, max tags)  
+- 📋 View Task Details  
+- 🧼 Truncate long descriptions  
+- 🌐 Fully Responsive and Clean UI  
+- 🎨 Angular Material + SCSS  
+- 🐳 Dockerized for easy deployment
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## 📦 Installation (Development)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. **Clone the repo**
 
-## Running unit tests
+```bash
+git clone https://github.com/your-username/task-tracker-app.git
+cd task-tracker-app
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2. **Install dependencies**
 
-## Running end-to-end tests
+```bash
+npm install
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+3. **Run locally**
 
-## Further help
+```bash
+ng serve
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Then open your browser and go to `http://localhost:4200`
+
+---
+
+## 🐳 Docker Support
+
+To run this app in a Docker container:
+
+### 1. **Build the Docker image**
+
+```bash
+docker build -t task-tracker-app .
+```
+
+### 2. **Run the container**
+
+```bash
+docker run -p 80:80 task-tracker-app
+```
+
+Then open your browser and go to `http://localhost`
+
+---
+
+## 🧰 Tech Stack
+
+- **Angular 16+**
+- **Angular Material**
+- **RxJS**
+- **SCSS**
+- **TypeScript**
+- **Docker**
+- **Public REST API** for tag suggestions
+
+

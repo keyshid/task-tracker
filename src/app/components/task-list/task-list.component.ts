@@ -12,7 +12,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class TaskListComponent implements OnInit {
   // This will hold the list of tasks we want to display
   tasks: Task[] = [];
-  sortBy: 'priority' | 'dueDate' = 'priority'; // <-- NEW
+  // sortBy: 'priority' | 'dueDate' = 'priority'; // 
+  sortBy: '' | 'priority' | 'dueDate' = '';
   loading = false;
   constructor(
     private taskService: TaskService,
@@ -25,9 +26,18 @@ export class TaskListComponent implements OnInit {
       this.tasks = tasks;
     });
   }
-
   onSortChange(sortBy: string): void {
-    const sortedTasks = [...this.tasks]; // clone to avoid mutating directly
+    this.sortBy = sortBy as any; // Update selected toggle
+
+    if (!sortBy) {
+      // None selected – reload original task list
+      this.taskService.getTasks().subscribe(tasks => {
+        this.tasks = tasks;
+      });
+      return;
+    }
+
+    const sortedTasks = [...this.tasks];
 
     switch (sortBy) {
       case 'priority':
@@ -38,9 +48,11 @@ export class TaskListComponent implements OnInit {
         break;
 
       case 'dueDate':
-        sortedTasks.sort((a, b) =>
-          new Date(a.dueDate || '').getTime() - new Date(b.dueDate || '').getTime()
-        );
+        sortedTasks.sort((a, b) => {
+          const aTime = a.dueDate ? new Date(a.dueDate).getTime() : Infinity;
+          const bTime = b.dueDate ? new Date(b.dueDate).getTime() : Infinity;
+          return aTime - bTime;
+        });
         break;
 
       case 'status':
@@ -50,9 +62,39 @@ export class TaskListComponent implements OnInit {
         break;
     }
 
-    // Push sorted tasks back into the service
-    this.taskService.setTasks(sortedTasks);
+    // this.taskService.setTasks(sortedTasks);
+    this.tasks = sortedTasks;
   }
+
+  // onSortChange(sortBy: string): void {
+  //   const sortedTasks = [...this.tasks]; // clone to avoid mutating directly
+
+  //   switch (sortBy) {
+  //     case 'priority':
+  //       const priorityOrder = ['Low', 'Medium', 'High'];
+  //       sortedTasks.sort((a, b) =>
+  //         priorityOrder.indexOf(b.priority || '') - priorityOrder.indexOf(a.priority || '')
+  //       );
+  //       break;
+
+  //     case 'dueDate':
+  //       sortedTasks.sort((a, b) =>
+  //         new Date(a.dueDate || '').getTime() - new Date(b.dueDate || '').getTime()
+  //       );
+  //       break;
+
+  //     case 'status':
+  //       sortedTasks.sort((a, b) =>
+  //         (a.status || '').localeCompare(b.status || '')
+  //       );
+  //       break;
+  //   }
+
+  //   // Push sorted tasks back into the service
+  //   this.taskService.setTasks(sortedTasks);
+  // }
+
+
   // Remove a tag from a task and update the task
   removeTag(task: Task, tagToRemove: string): void {
     task.tags = task.tags?.filter(tag => tag !== tagToRemove) || [];

@@ -1,6 +1,13 @@
+.main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .task-card {
     margin: 1rem 0;
     padding: 1rem;
+    width: 80%;
     border-left: 6px solid #9e9e9e; // Gray border to indicate archive
     background-color: #f5f5f5; // Light gray background
     opacity: 0.85; // Slightly faded to suggest archived status
@@ -50,4 +57,11 @@
             margin-left: 0.5rem;
         }
     }
+}
+
+.description {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    max-width: 100%;
 }

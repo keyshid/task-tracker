@@ -106,6 +106,7 @@ export class TaskFormComponent implements OnInit {
     this.taskService.addTask(newTask);
     this.snackBar.open('Task created successfully!', 'Close', {
       duration: 3000,
+      panelClass: ['snackbar-success']
     });
     this.resetFormAndRedirect();
     this.loading = false;
@@ -150,6 +151,7 @@ export class TaskFormComponent implements OnInit {
       currentTags.push(tag);
       this.taskForm.patchValue({ tags: currentTags });
       this.tagCtrl.setValue('');
+      this.tagCtrl.updateValueAndValidity();
       this.tagLimitReached = false;
     }
   }

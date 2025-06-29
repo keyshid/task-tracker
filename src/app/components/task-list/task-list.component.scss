@@ -15,7 +15,7 @@ mat-form-field {
 %glass {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 1.5rem;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    // box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(7.5px);
     -webkit-backdrop-filter: blur(7.5px);
     border: 1px solid rgba(255, 255, 255, 0.18);
@@ -26,8 +26,8 @@ mat-form-field {
     @extend %glass;
     padding: 1.5rem;
     margin: 1rem auto;
-    width: 100%;
-    max-width: 50rem;
+    // width: 100%;
+    max-width: 30rem;
     font-size: 1rem;
     transition: all 0.3s ease;
 
@@ -84,7 +84,8 @@ mat-form-field {
 
     mat-card-actions {
         display: flex;
-        // flex-wrap: wrap;
+        justify-content: space-between;
+        flex-wrap: wrap;
         gap: 0.5rem;
 
         button[mat-button] {
@@ -130,43 +131,97 @@ mat-form-field {
     font-weight: 600;
 }
 
+// .sort-wrapper {
+//     width: 100%;
+//     display: flex;
+//     justify-content: center;
+//     // margin: 2rem 0;
+
+//     mat-form-field {
+//         width: 250px;
+//         background: rgba(255, 255, 255, 0.1);
+//         backdrop-filter: blur(8px);
+//         border-radius: 0.75rem;
+//         padding: 0.5rem 1rem;
+//         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+//         border: 1px solid rgba(255, 255, 255, 0.2);
+
+//         .mat-mdc-form-field-flex {
+//             background: transparent !important;
+//         }
+
+//         .mat-mdc-select {
+//             color: #eee;
+//         }
+
+//         .mat-mdc-select-value {
+//             font-weight: 500;
+//         }
+
+//         .mat-mdc-select-placeholder {
+//             color: #bbb;
+//         }
+
+//         .mat-mdc-floating-label {
+//             color: #ccc;
+//         }
+
+//         .mat-mdc-form-field-infix {
+//             padding: 0.4rem 0;
+//         }
+//     }
+// }
 .sort-wrapper {
-    width: 100%;
     display: flex;
     justify-content: center;
-    // margin: 2rem 0;
+    // padding: 1rem;
+    margin-bottom: 1rem;
 
-    mat-form-field {
-        width: 250px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(8px);
-        border-radius: 0.75rem;
-        padding: 0.5rem 1rem;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+    .sort-toggle-group {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        border-radius: 12px;
+        overflow: hidden;
+        flex-wrap: wrap;
 
-        .mat-mdc-form-field-flex {
-            background: transparent !important;
-        }
-
-        .mat-mdc-select {
-            color: #eee;
-        }
-
-        .mat-mdc-select-value {
+        mat-button-toggle {
+            color: white;
             font-weight: 500;
+            text-transform: capitalize;
+            padding: 0.4rem 1.2rem;
+            background: transparent;
+            border-radius: 0;
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.15);
+            }
         }
 
-        .mat-mdc-select-placeholder {
-            color: #bbb;
-        }
-
-        .mat-mdc-floating-label {
-            color: #ccc;
-        }
-
-        .mat-mdc-form-field-infix {
-            padding: 0.4rem 0;
+        .mat-button-toggle-checked {
+            background: rgba(255, 255, 255, 0.25);
+            color: #111;
+            font-weight: 600;
         }
     }
+}
+
+.task-card[_ngcontent-swf-c29] {
+    padding: 1.5rem;
+    margin: 1rem auto;
+    max-width: 30%;
+    /* max-width: 50rem; */
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    display: flex;
+}
+
+.description {
+    display: block;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 100%;
+    overflow: hidden;
 }

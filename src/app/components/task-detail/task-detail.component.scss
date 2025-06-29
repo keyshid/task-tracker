@@ -1,6 +1,6 @@
 .task-card {
     max-width: 42rem;
-    margin: 3rem auto;
+    margin: auto;
     padding: 2rem;
     border-radius: 1.5rem;
     background: rgba(255, 255, 255, 0.15);
@@ -14,28 +14,28 @@
 mat-card-title {
     font-size: 2rem;
     font-weight: 700;
-    color: #111;
+    color: white;
     margin-bottom: 0.5rem;
 }
 
 mat-card-subtitle {
     font-size: 1rem;
     font-style: italic;
-    color: #3f3f3f;
-    margin-bottom: 1.5rem;
+    color: white;
+    margin-bottom: 1rem;
 }
 
 mat-card-content {
     font-size: 1rem;
-    line-height: 1.6;
-    color: #2a2a2a;
+    line-height: 1;
+    color: white;
 
     p {
         margin: 0.8rem 0;
     }
 
     strong {
-        color: #000;
+        color: white;
         font-weight: 600;
     }
 }
@@ -62,7 +62,7 @@ mat-chip-row {
 mat-card-actions {
     display: flex;
     justify-content: center;
-    margin-top: 2rem;
+    // margin-top: 2rem;
 
     button {
         padding: 0.6rem 1.6rem;
@@ -77,4 +77,11 @@ mat-card-actions {
             background: #356dc2;
         }
     }
+}
+
+.description {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    max-width: 100%;
 }

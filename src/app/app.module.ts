@@ -27,6 +27,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 // import { MatChipsModule } from '@angular/material';
 
@@ -68,7 +69,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatRippleModule,
     MatCardModule,
     MatSnackBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatButtonToggleModule
 
   ],
   providers: [],
