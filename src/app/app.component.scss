@@ -1,0 +1,89 @@
+:host {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    color: #ffffff;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    min-height: 100vh;
+    height: 100vh;
+    display: block;
+    overflow-x: hidden;
+}
+
+
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 4rem;
+    border-radius: 1rem;
+    margin: 1.5rem;
+    backdrop-filter: blur(1rem);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    img {
+        width: 2.5rem;
+        height: auto;
+    }
+
+    span {
+        font-size: 1.5rem;
+        font-weight: 600;
+        letter-spacing: 0.05rem;
+        margin-left: 1rem;
+        color: #ffffff;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+
+        a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease-in-out;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -0.2rem;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background-color: #ffffff;
+                transition: width 0.3s;
+            }
+
+            &:hover {
+                color: #a0c4ff;
+
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+
+.content {
+    max-width: 60rem;
+    margin: 1rem auto 1rem;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(1.2rem);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0.5rem 1.2rem rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // gap: 2rem;
+    // height: 100%;
+}

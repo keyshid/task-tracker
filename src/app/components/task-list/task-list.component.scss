@@ -1,0 +1,172 @@
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+}
+
+mat-form-field {
+    width: 18rem;
+    margin: 1rem 0;
+    font-size: 1rem;
+}
+
+
+%glass {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(7.5px);
+    -webkit-backdrop-filter: blur(7.5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+
+.task-card {
+    @extend %glass;
+    padding: 1.5rem;
+    margin: 1rem auto;
+    width: 100%;
+    max-width: 50rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+
+    mat-card-header {
+        margin-bottom: 0.5rem;
+
+        .mat-card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #fff;
+
+            a.task-title-link {
+                color: inherit;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                    color: #a7e0ff;
+                }
+            }
+        }
+
+        .mat-card-subtitle {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+    }
+
+    mat-card-content {
+        color: #f2f2f2;
+        margin-bottom: 1rem;
+
+        p {
+            margin: 0.3rem 0;
+        }
+
+        mat-chip-grid {
+            margin-top: 0.5rem;
+
+            mat-chip-row {
+                background-color: rgba(255, 255, 255, 0.2);
+                color: #fff;
+                font-weight: 500;
+                border-radius: 1rem;
+                margin-right: 0.5rem;
+
+                mat-icon {
+                    font-size: 1rem;
+                    color: #eee;
+                }
+            }
+        }
+    }
+
+    mat-card-actions {
+        display: flex;
+        // flex-wrap: wrap;
+        gap: 0.5rem;
+
+        button[mat-button] {
+            font-weight: 500;
+            border-radius: 1rem;
+            padding: 0.5rem 1rem;
+        }
+
+        button[color="warn"] {
+            background: rgba(255, 0, 0, 0.1);
+            color: #ff4c4c;
+        }
+
+        button[color="primary"] {
+            background: rgba(0, 123, 255, 0.1);
+            color: #66bfff;
+        }
+
+        button[color="accent"] {
+            background: rgba(255, 193, 7, 0.1);
+            color: #ffc107;
+        }
+    }
+
+    &:hover {
+        transform: scale(1.01);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+}
+
+.low-priority {
+    color: green;
+    font-weight: 500;
+}
+
+.medium-priority {
+    color: orange;
+    font-weight: 500;
+}
+
+.high-priority {
+    color: red;
+    font-weight: 600;
+}
+
+.sort-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    // margin: 2rem 0;
+
+    mat-form-field {
+        width: 250px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(8px);
+        border-radius: 0.75rem;
+        padding: 0.5rem 1rem;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+
+        .mat-mdc-form-field-flex {
+            background: transparent !important;
+        }
+
+        .mat-mdc-select {
+            color: #eee;
+        }
+
+        .mat-mdc-select-value {
+            font-weight: 500;
+        }
+
+        .mat-mdc-select-placeholder {
+            color: #bbb;
+        }
+
+        .mat-mdc-floating-label {
+            color: #ccc;
+        }
+
+        .mat-mdc-form-field-infix {
+            padding: 0.4rem 0;
+        }
+    }
+}

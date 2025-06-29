@@ -1,0 +1,29 @@
+<!-- Only display the card if a task was found -->
+<mat-card *ngIf="task" class="task-card">
+    <!-- Show the task title and status -->
+    <mat-card-title>{{ task.title }}</mat-card-title>
+    <mat-card-subtitle>Status: {{ task.status }}</mat-card-subtitle>
+    <!-- Main content with task details -->
+    <mat-card-content>
+        <p><strong>Description:</strong> {{ task.description }}</p>
+        <p><strong>Due Date:</strong> {{ task.dueDate | dueDateFormat }}</p>
+        <p><strong>Category:</strong> {{ task.category }}</p>
+        <p><strong>Priority:</strong> {{ task.priority }}</p>
+        <!-- Display tags only if there are any -->
+        <div *ngIf="task.tags?.length">
+            <p><strong>Tags:</strong></p>
+            <mat-chip-grid #readonlyGrid aria-label="Task Tags">
+                <mat-chip-row *ngFor="let tag of task.tags">
+                    {{ tag }}
+                </mat-chip-row>
+                <!-- Hidden input to satisfy Material structure -->
+                <input matChipInput [matChipInputFor]="readonlyGrid" style="display: none" />
+            </mat-chip-grid>
+
+        </div>
+    </mat-card-content>
+    <!-- Navigation button -->
+    <mat-card-actions>
+        <button mat-button routerLink="/">Back to List</button>
+    </mat-card-actions>
+</mat-card>

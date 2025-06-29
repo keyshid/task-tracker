@@ -1,0 +1,60 @@
+<div class="loading-container" *ngIf="loading">
+    <mat-spinner diameter="40"></mat-spinner>
+</div>
+<div class="sort-wrapper">
+    <mat-form-field appearance="fill">
+        <mat-label>Sort Tasks By</mat-label>
+        <mat-select [(value)]="sortBy" (selectionChange)="onSortChange($event.value)">
+            <mat-option value="priority">Priority</mat-option>
+            <mat-option value="dueDate">Due Date</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<!-- Loop through all tasks and show each one in a card -->
+<mat-card *ngFor="let task of tasks" class="task-card" [appDisableCompleted]="task.status"
+    [appOverdueHighlight]="task.dueDate || null">
+    <!-- Card header: title and status -->
+    <mat-card-header>
+        <mat-card-title>
+            <!-- Clicking on the title goes to the task detail page -->
+
+            {{ task.title }}
+
+        </mat-card-title>
+        <!-- <mat-card-subtitle>{{ task.status }} • {{ task.category }}</mat-card-subtitle> -->
+        <mat-card-subtitle>
+            {{ task.description | truncate }}
+        </mat-card-subtitle>
+
+    </mat-card-header>
+    <!-- Task body: description, due date, and tags -->
+    <mat-card-content>
+        <p><strong>status:</strong> {{ task.status }}</p>
+        <p><strong>category:</strong> {{ task.category }}</p>
+        <!-- <p>{{ task.description | truncate }}</p> -->
+        <p><strong>Due:</strong> {{ task.dueDate | dueDateFormat }}</p>
+        <p *ngIf="task.priority">
+            <strong>Priority:</strong>
+            <span [ngClass]="task.priority.toLowerCase() + '-priority'">
+                {{ task.priority }}
+            </span>
+        </p>
+        <!-- Tags list -->
+        <mat-chip-grid #readonlyGrid aria-label="Task Tags">
+            <mat-chip-row *ngFor="let tag of task.tags" [removable]="true" (removed)="removeTag(task, tag)">
+                {{ tag }}
+                <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip-row>
+            <!-- Hidden input just to satisfy Angular Material structure -->
+            <input matChipInput [matChipInputFor]="readonlyGrid" style="display: none" />
+        </mat-chip-grid>
+
+    </mat-card-content>
+    <!-- Action buttons for each task -->
+    <mat-card-actions>
+        <button mat-button color="accent" (click)="editTask(task.id)">Edit</button>
+        <button mat-button color="primary" (click)="viewTask(task.id)">View</button>
+        <button mat-button (click)="archiveTask(task.id)">Archive</button>
+        <button mat-button color="warn" (click)="deleteTask(task.id)">Delete</button>
+    </mat-card-actions>
+</mat-card>

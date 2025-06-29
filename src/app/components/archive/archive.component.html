@@ -1,0 +1,23 @@
+<mat-card *ngFor="let task of archivedTasks" class="task-card">
+    <mat-card-header>
+        <mat-card-title>{{ task.title }}</mat-card-title>
+        <mat-card-subtitle>{{ task.status }} • {{ task.category }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+        <p>{{ task.description }}</p>
+        <p><strong>Due:</strong> {{ task.dueDate | date }}</p>
+
+        <mat-chip-grid #readonlyGrid aria-label="Task Tags">
+            <mat-chip-row *ngFor="let tag of task.tags">
+                {{ tag }}
+            </mat-chip-row>
+            <input matChipInput [matChipInputFor]="readonlyGrid" style="display: none" />
+        </mat-chip-grid>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button mat-button (click)="unarchiveTask(task.id)">Unarchive</button>
+        <button mat-button color="warn" (click)="deleteTask(task.id)">Delete</button>
+    </mat-card-actions>
+</mat-card>

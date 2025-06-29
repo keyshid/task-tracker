@@ -1,0 +1,119 @@
+<div class="loading-container" *ngIf="loading">
+    <mat-spinner diameter="40"></mat-spinner>
+</div>
+<mat-card class="task-form-card">
+    <!-- Switches title based on mode -->
+    <mat-card-title>{{ isEditMode ? 'Edit Task' : 'Add New Task' }}</mat-card-title>
+    <mat-card-content>
+        <div *ngIf="loading" style="text-align: center; margin-top: 1rem;">
+            <mat-spinner diameter="40"></mat-spinner>
+        </div>
+        <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="task-form">
+
+            <!-- Title input -->
+            <mat-form-field appearance="fill">
+                <mat-label>Title</mat-label>
+                <input matInput formControlName="title" required />
+                <!-- Validation messages -->
+                <mat-error *ngIf="taskForm.get('title')?.hasError('required')">
+                    Title is required.
+                </mat-error>
+                <mat-error *ngIf="taskForm.get('title')?.hasError('minlength')">
+                    Title must be at least 3 characters.
+                </mat-error>
+                <mat-error *ngIf="taskForm.get('title')?.hasError('maxlength')">
+                    Title cannot exceed 50 characters.
+                </mat-error>
+            </mat-form-field>
+
+            <!-- Description -->
+            <mat-form-field appearance="fill">
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description"></textarea>
+                <mat-error *ngIf="taskForm.get('description')?.hasError('maxlength')">
+                    Description cannot exceed 200 characters.
+                </mat-error>
+            </mat-form-field>
+
+            <!-- Status -->
+            <mat-form-field appearance="fill">
+                <mat-label>Status</mat-label>
+                <mat-select formControlName="status" required>
+                    <mat-option value="To Do">To Do</mat-option>
+                    <mat-option value="In Progress">In Progress</mat-option>
+                    <mat-option value="Done">Done</mat-option>
+                </mat-select>
+                <mat-error *ngIf="taskForm.get('status')?.hasError('required')">
+                    Status is required.
+                </mat-error>
+            </mat-form-field>
+
+            <!-- Due Date -->
+            <mat-form-field appearance="fill">
+                <mat-label>Due Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="dueDate" />
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="taskForm.get('dueDate')?.hasError('pastDate')">
+                    Due date cannot be in the past.
+                </mat-error>
+            </mat-form-field>
+
+            <!-- Category -->
+            <mat-form-field appearance="fill">
+                <mat-label>Category</mat-label>
+                <mat-select formControlName="category" required>
+                    <mat-option value="Work">Work</mat-option>
+                    <mat-option value="Personal">Personal</mat-option>
+                    <mat-option value="Urgent">Urgent</mat-option>
+                    <mat-option value="Other">Other</mat-option>
+                </mat-select>
+                <mat-error *ngIf="taskForm.get('category')?.hasError('required')">
+                    Category is required.
+                </mat-error>
+            </mat-form-field>
+
+            <!-- Priority -->
+            <mat-form-field appearance="fill">
+                <mat-label>Priority</mat-label>
+                <mat-select formControlName="priority">
+                    <mat-option value="Low">Low</mat-option>
+                    <mat-option value="Medium">Medium</mat-option>
+                    <mat-option value="High">High</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <!-- Tags -->
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Tags</mat-label>
+                <mat-chip-grid #chipList aria-label="Tag selection">
+                    <mat-chip-row *ngFor="let tag of taskForm.value.tags" [removable]="true" (removed)="removeTag(tag)">
+                        {{ tag }}
+                        <mat-icon matChipRemove>cancel</mat-icon>
+                    </mat-chip-row>
+
+                    <input placeholder="Add tag..." [formControl]="tagCtrl" [matAutocomplete]="auto" matChipInput
+                        [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                        (matChipInputTokenEnd)="addTag($event.value)" />
+                </mat-chip-grid>
+
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="addTag($event.option.value)">
+                    <mat-option *ngFor="let option of filteredTagOptions | async" [value]="option">
+                        {{ option }}
+                    </mat-option>
+                </mat-autocomplete>
+                <div *ngIf="tagLoadError" class="error-message">
+                    Unable to load tags from API. Please enter custom tags.
+                </div>
+                <mat-error *ngIf="tagLimitReached">Cannot add more than 5 tags.</mat-error>
+            </mat-form-field>
+
+            <!-- Submit button -->
+            <button mat-raised-button color="primary" type="submit" [disabled]="taskForm.invalid">
+                {{ isEditMode ? 'Update Task' : 'Save Task' }}
+            </button>
+
+
+        </form>
+    </mat-card-content>
+</mat-card>
