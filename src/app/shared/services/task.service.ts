@@ -58,8 +58,9 @@ export class TaskService {
   archiveTask(id: number): void {
     const task = this.tasks.find(t => t.id === id);
     if (task) {
+      task.previousStatus = task.status as 'To Do' | 'In Progress';
       task.archived = true;
-      // task.status = 'Done'; // i'm not sure if we move the task to archive that means the task is done ???
+      task.status = 'Done'; // i'm not sure if we move the task to archive that means the task is done ???
       this.updateTaskSubject();
     }
   }
@@ -68,6 +69,8 @@ export class TaskService {
     const task = this.tasks.find(t => t.id === id);
     if (task) {
       task.archived = false;
+      task.status = task.previousStatus ?? 'To Do';
+      delete task.previousStatus;
       this.updateTaskSubject();
     }
   }

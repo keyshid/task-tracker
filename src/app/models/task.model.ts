@@ -6,6 +6,7 @@ export interface Task {
     dueDate?: Date;
     category: 'Work' | 'Personal' | 'Urgent' | 'Other';
     tags?: string[];
-    archived: boolean; // ✅ REQUIRED
-    priority?: 'Low' | 'Medium' | 'High'; // ✅ OPTIONAL
+    archived: boolean;
+    priority?: 'Low' | 'Medium' | 'High';
+    previousStatus?: 'To Do' | 'In Progress' | 'Done';
 }
