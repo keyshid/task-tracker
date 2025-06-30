@@ -23,8 +23,7 @@
 
 
 <!-- Loop through all tasks and show each one in a card -->
-<mat-card *ngFor="let task of tasks" class="task-card" [appDisableCompleted]="task.status"
-    [appOverdueHighlight]="task.dueDate || null">
+<mat-card *ngFor="let task of tasks" class="task-card" [appOverdueHighlight]="task.dueDate || null">
     <!-- Card header: title and status -->
     <mat-card-header>
         <mat-card-title>

@@ -8,7 +8,8 @@
         <div *ngIf="loading" style="text-align: center; margin-top: 1rem;">
             <mat-spinner diameter="40"></mat-spinner>
         </div>
-        <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="task-form">
+        <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="task-form"
+            [appDisableCompleted]="taskForm.get('status')?.value">
 
             <!-- Title input -->
             <mat-form-field appearance="fill">
