@@ -1,6 +1,6 @@
 <section class="main">
     <div class="archive-wrapper">
-        <mat-card *ngFor="let task of archivedTasks" class="task-card">
+        <mat-card *ngFor="let task of archivedTasks" class="task-card" [appOverdueHighlight]="task.dueDate || null">
             <mat-card-header>
                 <mat-card-title>{{ task.title }}</mat-card-title>
                 <mat-card-subtitle>{{ task.status }} • {{ task.category }}</mat-card-subtitle>
