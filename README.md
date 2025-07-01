@@ -1,22 +1,22 @@
 # 📝 Task Tracker App
 
-This is a simple and clean Task Tracker App built with **Angular 16**, **Angular Material**, and **SCSS**. You can add, view, update, delete, and archive your tasks. It supports form validation, sorting by priority or due date, responsive design, and even shows alerts and tag autocomplete from a public API.
+This is a simple and clean Task Tracker App built with **Angular 15**, **Angular Material**, and **SCSS**. You can add, view, update, delete, and archive your tasks. It supports form validation, sorting by priority or due date, responsive design, and even shows alerts and tag autocomplete from a public API.
 
 ---
 
 ## 🚀 Features
 
-- ✅ Add / Edit / Delete Tasks  
-- 🗂 Archive and Unarchive Tasks  
-- 🟡 Priority Sorting (Low, Medium, High)  
-- ⏰ Due Date Sorting and Overdue Highlight  
-- 🏷 Tag Autocomplete (fetched from public API)  
-- ⚠️ Custom Validators (no past dates, max tags)  
-- 📋 View Task Details  
-- 🧼 Truncate long descriptions  
-- 🌐 Fully Responsive and Clean UI  
-- 🎨 Angular Material + SCSS  
-- 🐳 Dockerized for easy deployment
+-  Add / Edit / Delete Tasks  
+-  Archive and Unarchive Tasks  
+-  Priority Sorting (Low, Medium, High)  
+-  Due Date Sorting and Overdue Highlight  
+-  Tag Autocomplete (fetched from public API)  
+-  Custom Validators (no past dates, max tags)  
+-  View Task Details  
+-  Truncate long descriptions  
+-  Fully Responsive and Clean UI  
+-  Angular Material + SCSS  
+-  Dockerized for easy deployment
 
 ---
 
@@ -76,7 +76,7 @@ Then open your browser and go to `http://localhost`
 
 ## 🧰 Tech Stack
 
-- **Angular 16+**
+- **Angular 15+**
 - **Angular Material**
 - **RxJS**
 - **SCSS**
